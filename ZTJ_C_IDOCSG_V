@@ -1,0 +1,27 @@
+@AbapCatalog.sqlViewName: 'ZTJ_C_IDOCSG_V'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Fiori IDOC Segment Consumption View'
+
+@Metadata.allowExtensions: true
+
+@VDM.viewType: #CONSUMPTION
+
+define view ZTJ_C_IDOCSG
+  as select from ZTJ_I_IDOCSG as _seg
+  association [1..1] to ZTJ_C_IDOC as _idoc on $projection.docnum = _idoc.docnum
+{
+
+  key _seg.docnum,
+  key _seg.counter,
+  key _seg.segnum,
+      _seg.segnam,
+      _seg.psgnum,
+      _seg.hlevel,
+      _seg._dataaging,
+      _seg.dtint2,
+      _seg.sdata,
+      
+      _idoc // Make association public
+}
