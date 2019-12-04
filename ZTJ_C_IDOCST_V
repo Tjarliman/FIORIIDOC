@@ -1,0 +1,43 @@
+@AbapCatalog.sqlViewName: 'ZTJ_C_IDOCST_V'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Fiori IDOC Status Consumption View'
+
+@Metadata.allowExtensions: true
+
+@VDM.viewType: #CONSUMPTION
+
+define view ZTJ_C_IDOCST
+  as select from ztj_i_idocst_v as _stat
+  association [1..1] to ZTJ_C_IDOC as _idoc on $projection.docnum = _idoc.docnum
+{
+
+  key _stat.docnum,
+  key _stat.logdat,
+  key _stat.logtim,
+  key _stat.countr,
+  _stat.credat,
+  _stat.cretim,
+  _stat.status,
+  _stat.uname,
+  _stat.repid,
+  _stat.routid,
+  _stat.stacod,
+  _stat.statxt,
+  _stat.segnum,
+  _stat.segfld,
+  _stat.stapa1,
+  _stat.stapa2,
+  _stat.stapa3,
+  _stat.stapa4,
+  _stat.statyp,
+  _stat.stamqu,
+  _stat.stamid,
+  _stat.stamno,
+  _stat.tid,
+  _stat.appl_log,
+  _stat._dataaging,
+
+  _idoc // Make association public
+}
