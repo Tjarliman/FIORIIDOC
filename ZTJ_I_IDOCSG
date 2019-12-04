@@ -1,0 +1,24 @@
+@AbapCatalog.sqlViewName: 'ZTJ_I_IDOCSG_V'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Fiori IDOC Segment View'
+define view ZTJ_I_IDOCSG
+  as select from edid4 as _segment
+  association [1..1] to ZTJ_I_IDOC as _idoc on  $projection.mandt  = _idoc.mandt
+                                                         and $projection.docnum = _idoc.docnum
+{
+
+  key _segment.mandt,
+  key _segment.docnum,
+  key _segment.counter,
+  key _segment.segnum,
+  _segment.segnam,
+  _segment.psgnum,
+  _segment.hlevel,
+  _segment._dataaging,
+  _segment.dtint2,
+  _segment.sdata,
+  
+  _idoc // Make association public
+}
