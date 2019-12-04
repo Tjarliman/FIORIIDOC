@@ -1,0 +1,72 @@
+@AbapCatalog.sqlViewName: 'ZTJ_C_IDOC_V'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Fiori IDOC Consumption View'
+
+@OData.publish: true
+
+@Metadata.allowExtensions: true
+
+@VDM.viewType: #CONSUMPTION
+
+define view ZTJ_C_IDOC
+  as select from ztj_i_idoc_v as _idoc
+  association [1..*] to ZTJ_C_IDOCST as _stat
+      on $projection.docnum = _stat.docnum
+  association [1..*] to ZTJ_C_IDOCSG as _seg
+      on $projection.docnum = _seg.docnum     
+{  
+  
+  key _idoc.docnum,
+  _idoc.docrel,
+  _idoc.status,
+  _idoc.doctyp,
+  _idoc.direct,
+  _idoc.rcvpor,
+  _idoc.rcvprt,
+  _idoc.rcvprn,
+  _idoc.rcvsad,
+  _idoc.rcvsmn,
+  _idoc.rcvsna,
+  _idoc.rcvsca,
+  _idoc.rcvsdf,
+  _idoc.rcvslf,
+  _idoc.rcvlad,
+  _idoc.std,
+  _idoc.stdvrs,
+  _idoc.stdmes,
+  _idoc.mescod,
+  _idoc.mesfct,
+  _idoc.outmod,
+  _idoc.test,
+  _idoc.sndpor,
+  _idoc.sndprt,
+  _idoc.sndprn,
+  _idoc.sndsad,
+  _idoc.sndsmn,
+  _idoc.sndsna,
+  _idoc.sndsca,
+  _idoc.sndsdf,
+  _idoc.sndslf,
+  _idoc.sndlad,
+  _idoc.refint,
+  _idoc.refgrp,
+  _idoc.refmes,
+  _idoc.arckey,
+  _idoc.credat,
+  _idoc.cretim,
+  _idoc.mestyp,
+  _idoc.idoctp,
+  _idoc.cimtyp,
+  _idoc.rcvpfc,
+  _idoc.sndpfc,
+  _idoc.serial,
+  _idoc.exprss,
+  _idoc.upddat,
+  _idoc.updtim,
+  _idoc.maxsegnum,
+
+  _stat, // Make association public
+  _seg
+}
