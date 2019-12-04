@@ -1,0 +1,112 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: {
+    headerInfo: {
+    typeName: 'Number of IDOCs',
+    typeNamePlural: 'Number of IDOCs',
+    title: { type: #STANDARD, label: 'IDOCs' }
+    }
+}
+
+annotate view ZTJ_C_IDOC with
+{
+
+  @UI.facet: [
+      {
+          label: 'Header data',
+          id: 'Header',
+          type: #COLLECTION
+      },
+      {
+          label: 'Document Information',
+          id : 'HeaderData',
+          parentId : 'Header',
+          type : #FIELDGROUP_REFERENCE,
+          targetQualifier : 'HeaderData'
+      },
+
+      {
+            label: 'Status',
+            purpose: #STANDARD,
+            id: 'Items',
+            type: #LINEITEM_REFERENCE,
+            targetElement: '_stat'
+
+        },
+      {
+            label: 'Segment',
+            purpose: #STANDARD,
+            id: 'Segments',
+            type: #LINEITEM_REFERENCE,
+            targetElement: '_seg'
+
+        }
+
+  ]
+
+  @UI: {
+    lineItem: [ { position: 10, label: 'IDOC Number', importance: #HIGH } ],
+    selectionField: [ { position: 10 } ],
+    identification:[ { position: 10, label: 'IDOC Number' } ],
+    fieldGroup: [{ qualifier: 'HeaderData', position: 10 }]
+  }
+  docnum;
+
+
+  @UI: {
+    lineItem: [ { position: 60, importance: #HIGH } ],
+    selectionField: [ { position: 60 } ],
+    identification:[ { position: 60 } ],
+    fieldGroup: [{ qualifier: 'HeaderData', position: 60 }]
+  }
+  status;
+
+  @UI: {
+    lineItem: [ { position: 50, importance: #HIGH } ],
+    selectionField: [ { position: 50 } ],
+    identification:[ { position: 50 } ],
+    fieldGroup: [{ qualifier: 'HeaderData', position: 50 }]
+  }
+  direct;
+
+  @UI: {
+    lineItem: [ { position: 11, importance: #HIGH } ],
+    selectionField: [ { position: 11 } ],
+    identification:[ { position: 11 } ],
+    fieldGroup: [{ qualifier: 'HeaderData', position: 11 }]
+  }
+  credat;
+
+  @UI: {
+    lineItem: [ { position: 20, importance: #HIGH } ],
+    selectionField: [ { position: 20 } ],
+    identification:[ { position: 20 } ],
+    fieldGroup: [{ qualifier: 'HeaderData', position: 20 }]
+  }
+  cretim;
+
+  @UI: {
+    lineItem: [ { position: 70, importance: #HIGH } ],
+    selectionField: [ { position: 70 } ],
+    identification:[ { position: 70 } ],
+    fieldGroup: [{ qualifier: 'HeaderData', position: 70 }]
+  }
+  idoctp;
+
+
+  @UI: {
+    lineItem: [ { position: 30, importance: #HIGH } ],
+    selectionField: [ { position: 30 } ],
+    identification:[ { position: 30 } ],
+    fieldGroup: [{ qualifier: 'HeaderData', position: 30 }]
+  }
+  upddat;
+
+  @UI: {
+    lineItem: [ { position: 40, importance: #HIGH } ],
+    selectionField: [ { position: 40 } ],
+    identification:[ { position: 40 } ],
+    fieldGroup: [{ qualifier: 'HeaderData', position: 40 }]
+  }
+  updtim;
+}
