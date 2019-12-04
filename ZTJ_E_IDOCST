@@ -1,0 +1,55 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: {
+    headerInfo: {
+    typeName: 'IDOC Status',
+    typeNamePlural: 'IDOC Statuses',
+
+    title: { type: #STANDARD, label: 'IDOC Status' }
+    }
+}
+
+annotate view ZTJ_C_IDOCST with
+{
+
+  @UI.facet: [
+  {
+      label: 'Item Information',
+      id : 'ItemData',
+      //parentId : 'Header',
+      type : #FIELDGROUP_REFERENCE,
+      targetQualifier : 'ItemData'
+  }]
+
+  @UI: {
+    lineItem: [ { position: 10, label: 'Log Date', importance: #HIGH } ],
+    selectionField: [ { position: 10 } ],
+    identification:[ { position: 10, label: 'Log Date' } ],
+    fieldGroup: [{ qualifier: 'ItemData', position: 10 }]
+  }
+  logdat;
+
+  @UI: {
+    lineItem: [ { position: 20, importance: #HIGH } ],
+    selectionField: [ { position: 20 } ],
+    identification:[ { position: 20 } ],
+    fieldGroup: [{ qualifier: 'ItemData', position: 20 }]
+  }
+  logtim;
+
+  @UI: {
+    lineItem: [ { position: 30, importance: #HIGH } ],
+    selectionField: [ { position: 30 } ],
+    identification:[ { position: 30 } ],
+    fieldGroup: [{ qualifier: 'ItemData', position: 30 }]
+  }
+  countr;
+
+  @UI: {
+    lineItem: [ { position: 40, importance: #HIGH } ],
+    selectionField: [ { position: 40 } ],
+    identification:[ { position: 40 } ],
+    fieldGroup: [{ qualifier: 'ItemData', position: 40 }]
+  }
+  credat;
+}
