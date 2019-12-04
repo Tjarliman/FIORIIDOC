@@ -1,0 +1,48 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: {
+    headerInfo: {
+    typeName: 'IDOC Segment',
+    typeNamePlural: 'IDOC Segments',
+
+    title: { type: #STANDARD, label: 'IDOC Segments' }
+    }
+}
+
+annotate view ZTJ_C_IDOCSG with
+{
+
+  @UI.facet: [
+  {
+      label: 'Segment Information',
+      id : 'SegmentData',
+      //parentId : 'Header',
+      type : #FIELDGROUP_REFERENCE,
+      targetQualifier : 'SegmentData'
+  }]
+
+  @UI: {
+    lineItem: [ { position: 10, importance: #HIGH } ],
+    selectionField: [ { position: 10 } ],
+    identification:[ { position: 10} ],
+    fieldGroup: [{ qualifier: 'SegmentData', position: 10 }]
+  }
+  segnam;
+
+  @UI: {
+    lineItem: [ { position: 20, importance: #HIGH } ],
+    selectionField: [ { position: 20 } ],
+    identification:[ { position: 20 } ],
+    fieldGroup: [{ qualifier: 'SegmentData', position: 20 }]
+  }
+  counter;
+
+  @UI: {
+    lineItem: [ { position: 30, importance: #HIGH } ],
+    selectionField: [ { position: 30 } ],
+    identification:[ { position: 30 } ],
+    fieldGroup: [{ qualifier: 'SegmentData', position: 30 }]
+  }
+  sdata;
+  
+}
