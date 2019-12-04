@@ -1,0 +1,67 @@
+@AbapCatalog.sqlViewName: 'ZTJ_I_IDOC_V'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'IDOC Master View'
+
+@OData.publish: true
+
+
+define view ZTJ_I_IDOC
+  as select from edidc as idoc
+  
+  association [1..*] to ZTJ_I_IDOCSG as _seg on  $projection.docnum = _seg.docnum
+  association [1..*] to ZTJ_I_IDOCST as _stat on  $projection.docnum = _stat.docnum
+{
+  
+  key idoc.docnum,
+      idoc.docrel,
+      idoc.status as status,
+      idoc.doctyp,
+      idoc.direct,
+      idoc.rcvpor,
+      idoc.rcvprt,
+      idoc.rcvprn,
+      idoc.rcvsad,
+      idoc.rcvsmn,
+      idoc.rcvsna,
+      idoc.rcvsca,
+      idoc.rcvsdf,
+      idoc.rcvslf,
+      idoc.rcvlad,
+      idoc.std,
+      idoc.stdvrs,
+      idoc.stdmes,
+      idoc.mescod,
+      idoc.mesfct,
+      idoc.outmod,
+      idoc.test,
+      idoc.sndpor,
+      idoc.sndprt,
+      idoc.sndprn,
+      idoc.sndsad,
+      idoc.sndsmn,
+      idoc.sndsna,
+      idoc.sndsca,
+      idoc.sndsdf,
+      idoc.sndslf,
+      idoc.sndlad,
+      idoc.refint,
+      idoc.refgrp,
+      idoc.refmes,
+      idoc.arckey,
+      idoc.credat,
+      idoc.cretim,
+      idoc.mestyp,
+      idoc.idoctp,
+      idoc.cimtyp,
+      idoc.rcvpfc,
+      idoc.sndpfc,
+      idoc.serial,
+      idoc.exprss,
+      idoc.upddat,
+      idoc.updtim,
+      idoc.maxsegnum,      
+      _seg,
+      _stat
+}
