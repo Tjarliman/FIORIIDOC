@@ -1,0 +1,39 @@
+@AbapCatalog.sqlViewName: 'ZTJ_I_IDOCST_V'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'IDOC Status View'
+define view ZTJ_I_IDOCST
+  as select from edids as stat
+  association [1..1] to ZTJ_I_IDOC as _idoc on  $projection.mandt  = _idoc.mandt
+                                            and $projection.docnum = _idoc.docnum
+{
+  key stat.mandt,
+  key stat.docnum,
+  key stat.logdat,
+  key stat.logtim,
+  key stat.countr,
+  stat.credat,
+  stat.cretim,
+  stat.status,
+  stat.uname,
+  stat.repid,
+  stat.routid,
+  stat.stacod,
+  stat.statxt,
+  stat.segnum,
+  stat.segfld,
+  stat.stapa1,
+  stat.stapa2,
+  stat.stapa3,
+  stat.stapa4,
+  stat.statyp,
+  stat.stamqu,
+  stat.stamid,
+  stat.stamno,
+  stat.tid,
+  stat.appl_log,
+  stat._dataaging,
+  
+  _idoc
+}
